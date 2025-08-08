@@ -1,3 +1,4 @@
+
 # 1. Iniciar todo
 (TENER DESACTIVADO XAMPP)
 docker-compose up -d
@@ -11,3 +12,11 @@ composer install
 # 4. Generar clave y migrar
 php artisan key:generate
 php artisan migrate
+
+
+--- Comandos Adicionales ---
+
+Elimina el contenedor y el
+volumen de la base de datos:
+  
+docker-compose down --volumes
