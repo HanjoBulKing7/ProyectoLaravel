@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('empleados', function (Blueprint $table) {
+        Schema::create('huellas', function (Blueprint $table) {
         $table->id();
-        $table->string('nombre');
-        $table->string('email')->nullable()->unique();
-        $table->string('telefono')->nullable();
+        $table->foreignId('empleado_id')->constrained('empleados')->onDelete('cascade');
+        $table->string('formato')->default('DP/ANSI');
+        $table->longText('fmd_xml');
         $table->timestamps();
         });
+
     }
 
     /**
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('empleados');
+        Schema::dropIfExists('huellas');
     }
 };

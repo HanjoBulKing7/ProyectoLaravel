@@ -6,7 +6,7 @@ docker-compose run --rm app composer install
 # 1. Iniciar todo (TENER DESACTIVADO XAMPP)
 docker-compose up -d
 
-# 2. Entrar al contenedor Laravel
+# 2. Entrar al contenedor Laravel (para ejecutar codigos como php artisan)
 docker exec -it laravel_app bash
 
 # 3. Instalar dependencias
@@ -25,7 +25,10 @@ Elimina el contenedor y el
 volumen de la base de datos:
   
 docker-compose down --volumes
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 Comandos ejecutables crear y eliminar
  * docker compose up --build -d
  * docker compose down
@@ -33,6 +36,16 @@ Comandos ejecutables crear y eliminar
 Iniciar y detener el contenedor desde la terminal
  * docker-compose stop
  * docker-compose start
+
+
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+--- configurado para utilizar enrutamiento de APIs ---
+* docker compose exec application php artisan install:api --passport
+
+ ---  MODELO / MIGRACIONES / CONTROLADORES ---
+* php artisan make:model Evento -mcr --api
 
 
 >>>>>>> Stashed changes
