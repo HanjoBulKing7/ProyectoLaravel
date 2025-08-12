@@ -20,7 +20,19 @@ php artisan migrate
 
 --- Comandos Adicionales ---
 
+<<<<<<< Updated upstream
 Elimina el contenedor y el
 volumen de la base de datos:
   
 docker-compose down --volumes
+=======
+Comandos ejecutables crear y eliminar
+ * docker compose up --build -d
+ * docker compose down
+
+Iniciar y detener el contenedor desde la terminal
+ * docker-compose stop
+ * docker-compose start
+
+
+>>>>>>> Stashed changes
