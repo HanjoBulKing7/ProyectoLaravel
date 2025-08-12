@@ -1,6 +1,9 @@
+# -- correr primero composer para poder correr la app de laravel --
+docker-compose run --rm app composer install
 
 # 1. Iniciar todo
 (TENER DESACTIVADO XAMPP)
+# 1. Iniciar todo (TENER DESACTIVADO XAMPP)
 docker-compose up -d
 
 # 2. Entrar al contenedor Laravel
@@ -10,6 +13,7 @@ docker exec -it laravel_app bash
 composer install
 
 # 4. Generar clave y migrar
+# 3. Generar clave y migrar
 php artisan key:generate
 php artisan migrate
 
