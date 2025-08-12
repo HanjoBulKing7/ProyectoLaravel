@@ -19,16 +19,6 @@ php artisan migrate
 
 
 --- Comandos Adicionales ---
-
-<<<<<<< Updated upstream
-Elimina el contenedor y el
-volumen de la base de datos:
-  
-docker-compose down --volumes
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 Comandos ejecutables crear y eliminar
  * docker compose up --build -d
  * docker compose down
@@ -38,14 +28,10 @@ Iniciar y detener el contenedor desde la terminal
  * docker-compose start
 
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 --- configurado para utilizar enrutamiento de APIs ---
 * docker compose exec application php artisan install:api --passport
 
- ---  MODELO / MIGRACIONES / CONTROLADORES ---
+CREAR ---  MODELO / MIGRACIONES / CONTROLADORES ---
 * php artisan make:model Evento -mcr --api
 
 
->>>>>>> Stashed changes
