@@ -16,12 +16,16 @@ class EmpleadoController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'celular' => 'required|string|max:20',
+            'email' => 'required|string|max:50',
+            'telefono' => 'required|string|max:20',
+
         ]);
 
         Empleado::create([
             'nombre' => $request->nombre,
-            'celular' => $request->celular,
+            'email' => $request->celular,
+            'telefono' => $request->telefono,
+
         ]);
 
         return redirect()->back()->with('success', 'Empleado registrado correctamente');
