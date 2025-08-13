@@ -1,0 +1,223 @@
+body {
+      font-family: "Montserrat", sans-serif;
+    }
+    .bg-beige {
+      background-color: #eee7df !important;
+    }
+    .desktop-menu a {
+    color: black;
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: color 0.3s;
+  }
+  .desktop-menu a:hover {
+    color: #f9a8d4; /* Rosa claro */
+  }
+    .service-card {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    .gradient-card {
+      transition: transform 0.3s ease;
+    }
+    .gradient-card:hover {
+      transform: scale(1.05);
+    }
+    .font-montas {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+    }
+    /* Header & nav styles */
+    .header {
+      position: relative;
+      z-index: 50;
+      background: transparent;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 1.5rem;
+    }
+    footer{
+            background-color: #c8c2bc;
+        }
+    #BotonReservar{
+
+    }
+     /* Menú desktop */
+  .desktop-menu {
+    display: none;
+  }
+
+  .desktop-menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: color 0.3s;
+  }
+
+  .desktop-menu a:hover {
+    color: #f9a8d4; /* Rosa claro */
+  }
+
+  /* Botón móvil */
+ .menu-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.3s;
+}
+.menu-btn:hover {
+  transform: scale(1.1);
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+  /* Menú móvil */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #f5ebdd; /* Beige claro */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+  }
+
+  .mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu a {
+    color: #5a3e36; /* Marrón oscuro */
+    text-decoration: none;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(90, 62, 54, 0.1);
+    font-size: 1rem;
+  }
+ /* Sección destacada */
+  .highlight-section {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .highlight-text {
+    font-style: italic;
+    color: #9c7c6d; /* Marrón medio */
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-button {
+    background: #b7796e; /* Rosa terracota */
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    display: block;
+    font-weight: 500;
+    margin: 0.5rem 0;
+  }
+
+  .natural-text {
+    color: #9c7c6d; /* Marrón medio */
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .menu-btn {
+      display: none;
+    }
+    
+    .desktop-menu {
+      display: flex;
+    }
+  }
+  /* Menú Escritorio - visible solo en desktop */
+  .desktop-menu {
+    display: none; /* Oculto por defecto */
+  }
+
+  /* Menú Móvil - oculto por defecto */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #f5ebdd;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+  }
+
+  /* Botón móvil - oculto por defecto */
+  #menu-btn {
+    display: none;
+  }
+
+  /* Mostrar menú desktop en pantallas grandes */
+  @media (min-width: 768px) {
+    .desktop-menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+  }
+
+  /* Mostrar botón móvil y menú móvil en pantallas pequeñas */
+  @media (max-width: 767px) {
+    #menu-btn {
+      display: block;
+    }
+    
+    /* Cuando el menú móvil está activo */
+    .mobile-menu.active {
+      display: block;
+    }
+  }
+    .logo-img {
+      height: 60px;
+    }
+    .desktop-menu {
+      display: none;
+    }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #f5ebdd;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      padding: 1rem 1.5rem;
+    }
+    #menu-btn {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .desktop-menu {
+        display: flex;
+        gap: 1.5rem;
+      }
+    }
+    @media (max-width: 767px) {
+      #menu-btn {
+        display: block;
+      }
+      .mobile-menu.active {
+        display: block;
+      }
+    }
