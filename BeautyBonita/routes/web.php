@@ -5,11 +5,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/interfaz', function () {
+    return view('interfaz');
+});
+Route::get('/servicio', function () {
+    return view('servicio');
+});
 
 use App\Http\Controllers\EmpleadoController;
 
 Route::get('/empleados/crear', [EmpleadoController::class, 'create'])->name('empleados.create');
 Route::post('/empleados', [EmpleadoController::class, 'store'])->name('empleados.store');
+
 
 
 use App\Http\Controllers\ClienteController;
