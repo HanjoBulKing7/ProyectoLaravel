@@ -11,6 +11,15 @@ Route::get('/interfaz', function () {
 Route::get('/servicio', function () {
     return view('servicio');
 });
+Route::get('/anticipo', function () {
+    return view('anticipo');
+});
+Route::get('/reserva', function () {
+    return view('reserva');
+});
+Route::get('/sucursal', function () {
+    return view('sucursal');
+});
 
 use App\Http\Controllers\EmpleadoController;
 

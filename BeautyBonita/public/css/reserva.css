@@ -1,0 +1,123 @@
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #eee7df;
+}
+#reservar-btn, header, footer {
+    background-color: #c8c2bc;
+}
+
+/* Estilistas */
+.estilista-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 2px solid transparent;
+    background: white;
+}
+.estilista-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #c8c2bc;
+}
+.estilista-card.selected {
+    border: 2px solid #c8c2bc;
+    background-color: #fdf2f8;
+    box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.2);
+}
+.image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+.estilista-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.estilista-card:hover .estilista-image {
+    transform: scale(1.05);
+}
+.selected-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+    color: #10b981;
+}
+.estilista-card.selected .selected-indicator {
+    opacity: 1;
+    transform: scale(1);
+}
+.estilista-info { padding: 1rem; text-align: center; }
+.estilista-name { font-weight: 600; color: #374151; margin-bottom: 0.25rem; }
+.estilista-specialty { color: #6b7280; font-size: 0.875rem; }
+
+/* Cards de servicio */
+.card-option {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: 2px solid transparent;
+}
+.card-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #f9a8d4;
+}
+.card-option.selected {
+    border: 2px solid #f472b6;
+    background-color: #fce7f3;
+}
+
+/* Horas */
+.time-option {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.time-option.selected {
+    background-color: #ec4899;
+    color: white;
+    border-color: #db2777;
+}
+
+/* Calendario */
+.calendar-day {
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.calendar-day:hover:not(.disabled-day) { background-color: #f3f4f6; }
+.available-day {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+.available-day:hover { background-color: #a7f3d0; }
+.disabled-day {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+.selected-day {
+    background-color: #ec4899;
+    color: white;
+    font-weight: bold;
+}
+.empty-day { visibility: hidden; }

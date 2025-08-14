@@ -1,0 +1,77 @@
+.header {
+    position: relative;
+    z-index: 50;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1.5rem;
+}
+
+.logo-img {
+    height: 40px;
+}
+
+.desktop-menu {
+    display: none;
+}
+
+.desktop-menu a {
+    color: black;
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: color 0.3s;
+}
+
+.desktop-menu a:hover {
+    color: #f9a8d4;
+}
+
+.menu-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.3s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #f5ebdd;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    padding: 1rem 1.5rem;
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu a {
+    color: #5a3e36;
+    text-decoration: none;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(90,62,54,0.1);
+}
+
+@media (min-width: 768px) {
+    .desktop-menu {
+        display: flex;
+        gap: 1.5rem;
+    }
+    .menu-btn {
+        display: none;
+    }
+}
