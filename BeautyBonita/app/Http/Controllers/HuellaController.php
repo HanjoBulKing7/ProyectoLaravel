@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Empleado;  
+use App\Models\Huella;
 
 class HuellaController extends Controller {
   public function store(Request $request, Empleado $empleado) {
