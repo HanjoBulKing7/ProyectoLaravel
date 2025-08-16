@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+//Agregar el controlador de EventoController 
+use App\Http\Controllers\EventoController;  
 
 
 Route::get('/user', function (Request $request) {
@@ -24,9 +26,6 @@ Route::get('/empleados/{empleado}/asistencias/ultima', function (\App\Models\Emp
         'ultima' => $last ? ['tipo' => $last->tipo, 'marcada_en' => $last->marcada_en] : null
     ]);
 });
-
-
-
 
 use App\Models\Huella;
 
