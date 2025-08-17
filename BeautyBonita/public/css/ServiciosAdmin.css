@@ -1,0 +1,39 @@
+body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f5f2;
+        }
+        .top-nav {
+            background-color: #c8c2bc;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-item {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .nav-item:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            border-bottom-color: #a18a7c;
+            font-weight: 500;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .btn-primary {
+            background-color: #a18a7c;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #8a7568;
+        }
+        .badge-active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .badge-inactive {
+            background-color: #ffebee;
+            color: #c62828;
+        }

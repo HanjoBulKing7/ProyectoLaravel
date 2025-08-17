@@ -20,6 +20,22 @@ Route::get('/reserva', function () {
 Route::get('/sucursal', function () {
     return view('sucursal');
 });
+Route::get('/serviciosadmin', function () {
+    return view('serviciosadmin');
+});
+Route::get('/empleadosadmin', function () {
+    return view('empleadosadmin');
+});
+Route::get('/citasadmin', function () {
+    return view('citasadmin');
+});
+Route::get('/clientesadmin', function () {
+    return view('clientesadmin');
+});
+Route::get('/admin', function () {
+    return view('admin');
+});
+
 
 use App\Http\Controllers\EmpleadoController;
 

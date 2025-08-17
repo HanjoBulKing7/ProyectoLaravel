@@ -2,16 +2,31 @@ body {
       font-family: "Montserrat", sans-serif;
     }
     .bg-beige {
-      background-color: #eee7df !important;
+      background-color: #999189 !important;
     }
     .desktop-menu a {
-    color: black;
+    color: white;
     text-decoration: none;
     margin-left: 2rem;
     transition: color 0.3s;
   }
   .desktop-menu a:hover {
     color: #f9a8d4; /* Rosa claro */
+  }
+  #BtnReservas{
+    color: white;
+    background-color: #999189;
+  }
+  #BtnReservas:hover{
+    color: white;
+    background-color: #c8c2bc;
+  }
+  #CTAA{
+    color: #999189;
+  }
+  #CTAA:hover{
+    color: white;
+    background-color: #c8c2bc;
   }
     .service-card {
       transition: all 0.3s ease;
@@ -45,7 +60,7 @@ body {
       padding: 1.5rem 1.5rem;
     }
     footer{
-            background-color: #c8c2bc;
+            background-color: #999189;
         }
     #BotonReservar{
 
