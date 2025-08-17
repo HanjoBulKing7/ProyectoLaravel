@@ -11,6 +11,7 @@ Route::get('/interfaz', function () {
 Route::get('/servicio', function () {
     return view('servicio');
 });
+
 Route::get('/anticipo', function () {
     return view('anticipo');
 });

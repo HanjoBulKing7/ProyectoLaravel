@@ -7,23 +7,26 @@ use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
 {
-    public function create()
+    // Listar (opcional, para ver lo creado)
+    public function index()
     {
-        return view('empleados.create');
+        return Empleado::latest()->get();
     }
 
+    // Crear
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'celular' => 'required|string|max:20',
+        $data = $request->validate([
+            'nombre'   => 'required|string|max:150',
+            'email'    => 'nullable|email|unique:empleados,email',
+            'telefono' => 'nullable|string|max:30',
         ]);
 
-        Empleado::create([
-            'nombre' => $request->nombre,
-            'celular' => $request->celular,
-        ]);
+        $empleado = Empleado::create($data);
 
-        return redirect()->back()->with('success', 'Empleado registrado correctamente');
+        return response()->json([
+            'ok'        => true,
+            'empleado'  => $empleado
+        ], 201);
     }
 }
