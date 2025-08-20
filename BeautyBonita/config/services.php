@@ -39,4 +39,8 @@ return [
         ],
     ],
 
+    'stripe' => [//Here we configuree the keys for the Stripe API
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ]
 ];
