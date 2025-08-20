@@ -37,9 +37,7 @@ Route::get('/catalogo-fmds', function () {
 });
 
 
-use App\Http\Controllers\EmpleadoController;
-use App\Http\Controllers\AsistenciaController;
-use App\Http\Controllers\HuellaController;
+
 
 Route::middleware(PuenteToken::class)->group(function () {
     // Empleados
