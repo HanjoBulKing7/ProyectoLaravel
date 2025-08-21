@@ -1,9 +1,11 @@
 <header class="header">
     <nav class="nav">
         <!-- Logo -->
-        <div class="logo">
-            <img src="{{ asset('iconos/logo negro.png') }}" alt="Beauty Logo" class="logo-img">
-        </div>
+        <a href="{{ url('/interfaz') }}">
+            <div class="logo">
+                <img src="{{ asset('iconos/logo blanco.png') }}" alt="Beauty Logo" class="logo-img">
+            </div>
+        </a>
 
         <!-- Botón Móvil -->
         <button id="menu-btn" class="menu-btn rounded-full p-2">

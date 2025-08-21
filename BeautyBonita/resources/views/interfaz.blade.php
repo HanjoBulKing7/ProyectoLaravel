@@ -35,9 +35,11 @@
         <header class="header">
             <nav class="nav">
                 <!-- Logo -->
-                <div class="logo">
-                    <img src="{{ asset('iconos/logo blanco.png') }}" alt="Beauty Logo" class="logo-img">
-                </div>
+                <a href="{{ url('/interfaz') }}">
+                    <div class="logo">
+                        <img src="{{ asset('iconos/logo blanco.png') }}" alt="Beauty Logo" class="logo-img">
+                    </div>
+                </a>
 
                 <!-- Botón Móvil -->
                 <button id="menu-btn" class="rounded-full p-2" style="background-color: #f9f4ef52;">
@@ -60,7 +62,7 @@
                 <!-- Menú Escritorio -->
                 <div class="desktop-menu">
                     <a href="{{ url('/interfaz') }}">Inicio</a>
-                    <a href="#servicios">Servicios</a>
+                    <a href="{{ url('/servicio') }}">Servicios</a>
                     <a href="#galeria">Portafolio</a>
                     <a href="#testimonios">Testimonios</a>
                     <a href="#ubicacion">Sucursal</a>
@@ -71,7 +73,7 @@
             <div id="mobile-menu" class="mobile-menu">
                 <div class="mobile-menu-content">
                     <a href="{{ url('/') }}">Inicio</a>
-                    <a href="#servicios">Servicios</a>
+                    <a href="{{ url('/servicio') }}">Servicios</a>
                     <a href="#galeria">Portafolio</a>
                     <a href="{{ url('sucursal') }}">Sucursal</a>
                     <a href="#contacto">Testimonios</a>
@@ -113,7 +115,7 @@
     <!-- Services Section -->
     <section id="servicios" class="py-20 bg-[#F5EBDD]">
         <div class="max-w-6xl mx-auto px-6 lg:px-12">
-            <h2 class="text-3xl text-center mb-12 text-gray-800 font-semibold">Nuestros Servicios</h2>
+            <h2 class="text-3xl md:text-4xl text-center mb-12 text-gray-800 font-montas">Nuestros Servicios</h2>
 
             <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
 
@@ -121,7 +123,7 @@
                 <div class="w-full max-w-xs rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-300 bg-white">
                     <img src="{{ asset('images/maqullaje.png') }}" alt="Maquillaje" class="w-full h-64 object-cover">
                     <div class="p-6 text-center">
-                        <h3 class="text-2xl font-bold text-black mb-3">Maquillaje y Pestañas</h3>
+                        <h3 class="text-2xl font-montas text-black mb-3">Maquillaje y Pestañas</h3>
                         <a href="{{ url('servicio') }}" class="inline-block mt-2 bg-beige text-black px-5 py-2 rounded-full hover:bg-beige-800 transition-colors duration-200">Ver más</a>
                     </div>
                 </div>
@@ -130,7 +132,7 @@
                 <div class="w-full max-w-xs rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-300 bg-white">
                     <img src="{{ asset('images/Peinado2.png') }}" alt="Peinado" class="w-full h-64 object-cover">
                     <div class="p-6 text-center">
-                        <h3 class="text-2xl font-bold text-black mb-3">Cabello</h3>
+                        <h3 class="text-2xl font-montas text-black mb-3">Cabello</h3>
                         <a href="{{ url('servicio') }}" class="inline-block mt-2 bg-beige text-black px-5 py-2 rounded-full hover:bg-beige-800 transition-colors duration-200">Ver más</a>
                     </div>
                 </div>
@@ -139,7 +141,7 @@
                 <div class="w-full max-w-xs rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-300 bg-white">
                     <img src="{{ asset('images/Peinado.png') }}" alt="Color" class="w-full h-64 object-cover">
                     <div class="p-6 text-center">
-                        <h3 class="text-2xl font-bold text-black mb-3">Manicure y Pedicure</h3>
+                        <h3 class="text-2xl font-montas text-black mb-3">Manicure y Pedicure</h3>
                         <a href="{{ url('servicio') }}" class="inline-block mt-2 bg-beige text-black px-5 py-2 rounded-full hover:bg-beige-800 transition-colors duration-200">Ver más</a>
                     </div>
                 </div>
@@ -148,7 +150,7 @@
                 <div class="w-full max-w-xs rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-shadow duration-300 bg-white">
                     <img src="{{ asset('images/maqullaje.png') }}" alt="Corte" class="w-full h-64 object-cover">
                     <div class="p-6 text-center">
-                        <h3 class="text-2xl font-bold text-black mb-3">Faciales y Tratamientos</h3>
+                        <h3 class="text-2xl font-montas text-black mb-3">Faciales y Tratamientos</h3>
                         <a href="{{ url('servicio') }}" class="inline-block mt-2 bg-beige text-black px-5 py-2 rounded-full hover:bg-beige-800 transition-colors duration-200">Ver más</a>
                     </div>
                 </div>
@@ -158,34 +160,126 @@
     </section>
 
     <!-- Video Section -->
-    <section class="bg-[#F5EBDD] py-20 px-6">
-        <div class="max-w-6xl mx-auto text-center space-y-8">
-            <a href="{{ url('sucursal') }}" class="cursor-pointer">
+    <section class="bg-[#F5EBDD] py-20 px-6" id="sucursal-section">
+    <div class="max-w-6xl mx-auto text-center space-y-8">
+        <a href="{{ url('sucursal') }}" class="cursor-pointer">
             <h2 class="text-3xl md:text-4xl font-montas text-gray-800">
                 Conoce nuestra sucursal
             </h2>
             <p class="text-gray-500 max-w-2xl mx-auto">
                 Descubre las instalaciones y el ambiente que ofrecemos en nuestra sucursal para brindarte la mejor experiencia.
             </p>
-            </a>
+        </a>
 
-            <div class="flex justify-center">
-            <div class="max-h-[90vh] aspect-[9/16] w-auto rounded-xl overflow-hidden shadow-lg">
-                <video
-                class="w-full h-80 cursor-pointer"
-                autoplay
-                muted
-                loop
-                playsinline
-                onclick="if (this.requestFullscreen) { this.requestFullscreen(); } else if (this.webkitRequestFullscreen) { this.webkitRequestFullscreen(); } else if (this.msRequestFullscreen) { this.msRequestFullscreen(); }"
-                >
-                <source src="{{ asset('videos/copy_2C830AC7-5410-4619-A784-F171A6F040E2.MOV') }}" type="video/mp4" />
-                Tu navegador no soporta videos en HTML5.
-                </video>
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+            <!-- Video con efecto de scroll -->
+            <div class="w-full lg:w-1/2 transition-all duration-500 transform hover:scale-105">
+                <div class="rounded-xl overflow-hidden shadow-lg video-container">
+                    <video class="w-full h-auto max-h-[70vh] object-cover cursor-pointer"
+                        autoplay muted loop playsinline
+                        onclick="toggleFullscreen(this)">
+                        <source src="{{ asset('videos/copy_2C830AC7-5410-4619-A784-F171A6F040E2.MOV') }}" type="video/mp4" />
+                        Tu navegador no soporta videos en HTML5.
+                    </video>
+                </div>
             </div>
+
+            <!-- Información de la sucursal (aparece al hacer scroll) -->
+            <div class="w-full lg:w-1/2 space-y-6 info-container opacity-0 translate-y-10 transition-all duration-700">
+                <div class="text-left space-y-4">
+                    <h3 class="text-2xl font-semibold text-gray-800">Nuestra ubicación</h3>
+                    <p class="text-gray-600">
+                        <i class="fas fa-map-marker-alt mr-2 text-[#a18a7c]"></i>
+                        Av. Principal #123, Colonia Centro, Ciudad de México
+                    </p>
+                    <p class="text-gray-600">
+                        <i class="fas fa-clock mr-2 text-[#a18a7c]"></i>
+                        Horario: Lunes a Sábado de 9:00 AM a 8:00 PM
+                    </p>
+                    <p class="text-gray-600">
+                        <i class="fas fa-phone mr-2 text-[#a18a7c]"></i>
+                        Teléfono: 55 1234 5678
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-start">
+                    <a href="tel:5512345678" class="bg-[#a18a7c] text-white px-6 py-3 rounded-lg hover:bg-[#8a7568] transition-colors duration-300 flex items-center justify-center">
+                        <i class="fas fa-phone mr-2"></i> Llamar ahora
+                    </a>
+                    <a href="{{ url('reservas') }}" class="bg-white text-[#a18a7c] border border-[#a18a7c] px-6 py-3 rounded-lg hover:bg-[#f5f0eb] transition-colors duration-300 flex items-center justify-center">
+                        <i class="fas fa-calendar-check mr-2"></i> Reservar cita
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+    /* Efectos para el video al hacer scroll */
+    .video-container {
+        transition: transform 0.5s ease;
+    }
+
+    /* Clase que se agregará con JavaScript al hacer scroll */
+    .scale-video {
+        transform: scale(0.7);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Mostrar información con efecto fade-in */
+    .show-info {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+</style>
+
+<script>
+    // Función para pantalla completa
+    function toggleFullscreen(video) {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+        }
+    }
+
+    // Efecto de scroll con Intersection Observer
+    document.addEventListener('DOMContentLoaded', function() {
+        const section = document.getElementById('sucursal-section');
+        const videoContainer = document.querySelector('.video-container');
+        const infoContainer = document.querySelector('.info-container');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Aplicar efecto al video
+                    videoContainer.classList.add('scale-video');
+                    
+                    // Mostrar información con retraso
+                    setTimeout(() => {
+                        infoContainer.classList.add('show-info');
+                    }, 300);
+                    
+                    // Opcional: dejar de observar después de activarse
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 }); // Se activa cuando el 30% de la sección es visible
+
+        observer.observe(section);
+
+        // Asegurarse de que Font Awesome esté cargado
+        if (!document.querySelector('link[href*="font-awesome"]')) {
+            const faLink = document.createElement('link');
+            faLink.rel = 'stylesheet';
+            faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+            document.head.appendChild(faLink);
+        }
+    });
+</script>
 
 
     <!-- Gallery Section -->
