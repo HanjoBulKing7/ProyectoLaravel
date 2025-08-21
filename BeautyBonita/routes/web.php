@@ -21,6 +21,9 @@ Route::get('/reserva', function () {
 Route::get('/sucursal', function () {
     return view('sucursal');
 });
+Route::get('/login', function () {
+    return view('login');
+});
 
 use App\Http\Controllers\EmpleadoController;
 
