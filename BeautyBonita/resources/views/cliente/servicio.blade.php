@@ -20,7 +20,7 @@
     <nav class="nav">
       <!-- Logo -->
       <div class="logo">
-        <img src="{{ asset('iconos/logo negro.png') }}" alt="Beauty Logo" class="logo-img">
+        <img src="{{ asset('iconos/logo blanco.png') }}" alt="Beauty Logo" class="logo-img">
       </div>
 
       <!-- Botón Móvil -->
@@ -62,8 +62,8 @@
 
   <!-- Hero Section del servicio -->
   <section class="relative py-20 bg-gradient-to-r from-amber-800 to-amber-600">
-    <div class="max-w-6xl mx-auto px-6 lg:px-12 text-center text-black">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">Maquillaje Profesional</h1>
+    <div class="max-w-6xl mx-auto px-6 lg:px-12 text-center text-white">
+      <h1 class="text-4xl md:text-6xl font-montas mb-6">Maquillaje Profesional</h1>
       <p class="text-xl md:text-2xl max-w-3xl mx-auto">
         Realza tu belleza natural con nuestras técnicas expertas adaptadas a cada ocasión
       </p>
@@ -78,7 +78,7 @@
         <div class="service-card bg-white rounded-xl overflow-hidden">
           <img src="{{ asset('images/maqullaje.png') }}" alt="Maquillaje Natural" class="w-full h-64 object-cover">
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-800 mb-3">Estilo Natural</h3>
+            <h3 class="text-2xl font-montas text-gray-800 mb-3">Estilo Natural</h3>
             <p class="text-gray-600 mb-4">
               Perfecto para el día a día. Resalta tus rasgos con un look fresco y luminoso que parece tu piel pero mejorada.
             </p>
@@ -96,7 +96,7 @@
                 Productos ligeros y transpirables
               </li>
             </ul>
-            <a href="{{ url('reservas') }}" class="inline-block bg-gray-300 text-white px-6 py-2 rounded-full hover:bg-gray-400 transition-colors">
+            <a id="BtnReservas" href="{{ url('reservas') }}" class="inline-block bg-gray-300 text-white px-6 py-2 rounded-full hover:bg-gray-400 transition-colors">
               Reservar
             </a>
           </div>
@@ -106,7 +106,7 @@
         <div class="service-card bg-white rounded-xl overflow-hidden">
           <img src="{{ asset('images/Uñas2.jpg') }}" alt="Maquillaje de Noche" class="w-full h-64 object-cover">
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-800 mb-3">Estilo Elegante</h3>
+            <h3 class="text-2xl font-montas text-gray-800 mb-3">Estilo Elegante</h3>
             <p class="text-gray-600 mb-4">
               Ideal para eventos nocturnos. Contornos definidos, ojos ahumados y labios intensos para una mirada dramática.
             </p>
@@ -124,7 +124,7 @@
                 Productos de larga duración
               </li>
             </ul>
-            <a href="{{ url('reservas') }}" class="inline-block bg-gray-300 text-white px-6 py-2 rounded-full hover:bg-gray-400 transition-colors">
+            <a id="BtnReservas" href="{{ url('reservas') }}" class="inline-block bg-gray-300 text-white px-6 py-2 rounded-full hover:bg-gray-400 transition-colors">
               Reservar
             </a>
           </div>
@@ -134,7 +134,7 @@
         <div class="service-card bg-white rounded-xl overflow-hidden">
           <img src="{{ asset('images/maqullaje2.png') }}" alt="Maquillaje Artístico" class="w-full h-64 object-cover">
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-800 mb-3">Estilo Creativo</h3>
+            <h3 class="text-2xl font-montas text-gray-800 mb-3">Estilo Creativo</h3>
             <p class="text-gray-600 mb-4">
               Para los looks más atrevidos. Desde fantasía hasta efectos especiales, creamos arte en tu rostro.
             </p>
@@ -152,7 +152,7 @@
                 Materiales especializados
               </li>
             </ul>
-            <a href="{{ url('reservas') }}" class="inline-block bg-gray-300 text-white px-6 py-2 rounded-full hover:bg-gray-400 transition-colors">
+            <a id="BtnReservas" href="{{ url('reservas') }}" class="inline-block bg-gray-300 text-white px-6 py-2 rounded-full hover:bg-gray-400 transition-colors">
               Reservar
             </a>
           </div>
@@ -164,7 +164,7 @@
   <!-- Galería de trabajos -->
   <section class="py-20 bg-white" id="galeria">
     <div class="max-w-6xl mx-auto px-6 lg:px-12">
-      <h2 class="text-3xl text-center mb-12 text-gray-800">Nuestros Trabajos</h2>
+      <h2 class="text-3xl text-center font-montas mb-12 text-gray-800">Nuestros Trabajos</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <div class="overflow-hidden rounded-lg">
           <img src="{{ asset('images/53b8d035-6ec7-45c2-a839-bcd153cb7f18.png') }}" alt="Trabajo de maquillaje 1" class="w-full h-64 object-cover hover:scale-105 transition-transform">
@@ -183,21 +183,21 @@
   </section>
 
   <!-- CTA -->
-  <section class="py-16 bg-amber-700 text-black">
+  <section class="py-16 bg-beige text-white">
     <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">¿Lista para realzar tu belleza?</h2>
+      <h2 class="text-3xl md:text-4xl font-montas mb-6">¿Lista para realzar tu belleza?</h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
         Agenda una consulta gratuita para discutir el look perfecto para tu ocasión especial
       </p>
-      <a href="{{ url('reservas') }}" class="inline-block bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors">
+      <a id="CTAA" href="{{ url('reservas') }}" class="inline-block bg-white  px-8 py-3 rounded-full font-montas hover:bg-gray-100 transition-colors">
         Agendar Consulta
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[#eee7df] text-white py-12">
-    <div class="text-center text-white">
+  <footer class="bg-[#eee7df] text-white py-10">
+    <div class="text-center font-montas text-white">
       <p>© 2025 Beauty Bonita - Todos los derechos reservados</p>
     </div>
   </footer>
