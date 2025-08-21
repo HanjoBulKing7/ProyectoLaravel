@@ -13,6 +13,10 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'puente' => [
+    'token' => env('PUENTE_TOKEN'),
+    ],
+
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
@@ -35,4 +39,8 @@ return [
         ],
     ],
 
+    'stripe' => [//Here we configuree the keys for the Stripe API
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+    ]
 ];

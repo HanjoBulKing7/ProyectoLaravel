@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Evento;
+use App\Models\Prueba;
 use Illuminate\Http\Request;
 
-class EventoController extends Controller
+class PruebaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class EventoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Evento $evento)
+    public function show(Prueba $prueba)
     {
         //
     }
@@ -34,7 +34,7 @@ class EventoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Evento $evento)
+    public function update(Request $request, Prueba $prueba)
     {
         //
     }
@@ -42,7 +42,7 @@ class EventoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Evento $evento)
+    public function destroy(Prueba $prueba)
     {
         //
     }
