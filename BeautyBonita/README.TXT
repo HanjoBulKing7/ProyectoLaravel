@@ -17,8 +17,26 @@ composer install
 # 3. Generar clave y migrar
 php artisan key:generate
 php artisan migrate
+-------------------------------------------------------------------
+🚀 Pasos para levantar el proyecto
 
------------------------------------------------------------------
+Levantar los contenedores con Docker:
+docker compose up -d --build
+
+Ejecutar las migraciones de la base de datos:
+docker compose exec app php artisan migrate
+
+Ejecutar los seeders para poblar datos iniciales:
+docker compose exec app php artisan db:seed
+
+Levantar el servidor de Vite para compilar assets (Tailwind, JS, etc.):
+docker compose exec app npm run dev
+
+Abrir en el navegador:
+http://localhost:8000/register
+
+✅ Con esto ya tendrás el sistema funcionando y podrás registrarte en el CRM.
+-----------------------------------------------------------------------
 --- Comandos Adicionales ---
 Comandos ejecutables crear y eliminar
  * docker compose up --build -d
