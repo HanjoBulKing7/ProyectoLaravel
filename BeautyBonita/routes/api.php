@@ -53,3 +53,8 @@ Route::get('/empleados', [EmpleadoController::class, 'index']);
 
 Route::get('/ping', fn() => ['pong' => now()])
     ->middleware(PuenteToken::class);
+
+    // Rutas para gestión de categorías
+Route::resource('admin/categorias-servicios', CategoriaServicioController::class)
+     ->names('categorias-servicios')
+     ->parameters(['categorias-servicios' => 'categoria']);

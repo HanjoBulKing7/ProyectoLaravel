@@ -24,29 +24,31 @@
             <div class="flex justify-between h-16">
                 <!-- Logo y nombre -->
                 <div class="flex items-center">
-                    <img src="{{ asset('iconos/logo blanco.png') }}" alt="Logo" class="h-8 mr-3">
+                    <a href="{{ url('/admin/home') }}">
+                        <img src="{{ asset('iconos/logo blanco.png') }}" alt="Logo" class="h-8 mr-3">
+                    </a>
                     <span class="text-lg font-medium"> Admin Citas </span>
                 </div>
                 
                 <!-- Menú principal -->
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="{{ url('/admin') }}" class="nav-item px-4 py-2 flex items-center">
+                    <a href="{{ url('/admin/home') }}" class="nav-item px-4 py-2 flex items-center">
                         <i data-feather="home" class="mr-2 w-5 h-5"></i>
                         Dashboard
                     </a>
-                    <a href="{{ url('/serviciosadmin') }}" class="nav-item px-4 py-2 flex items-center">
+                    <a href="{{ url('/admin/servicios') }}" class="nav-item px-4 py-2 flex items-center">
                         <i data-feather="scissors" class="mr-2 w-5 h-5"></i>
                         Servicios
                     </a>
-                    <a href="{{ url('/citasadmin') }}" class="nav-item active px-4 py-2 flex items-center">
+                    <a href="{{ url('/admin/citas') }}" class="nav-item active px-4 py-2 flex items-center">
                         <i data-feather="calendar" class="mr-2 w-5 h-5"></i>
                         Citas
                     </a>
-                    <a href="{{ url('/clientesadmin') }}" class="nav-item px-4 py-2 flex items-center">
+                    <a href="{{ url('/admin/clientes') }}" class="nav-item px-4 py-2 flex items-center">
                         <i data-feather="users" class="mr-2 w-5 h-5"></i>
                         Clientes
                     </a>
-                    <a href="{{ url('/empleadosadmin') }}" class="nav-item px-4 py-2 flex items-center">
+                    <a href="{{ url('/admin/empleados') }}" class="nav-item px-4 py-2 flex items-center">
                         <i data-feather="user-check" class="mr-2 w-5 h-5"></i>
                         Empleados
                     </a>
@@ -78,23 +80,23 @@
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
         <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="{{ url('/admin') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            <a href="{{ url('/admin/home') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 <i data-feather="home" class="inline mr-2 w-4 h-4"></i>
                 Dashboard
             </a>
-            <a href="{{ url('/serviciosadmin') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            <a href="{{ url('/admin/servicios') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 <i data-feather="scissors" class="inline mr-2 w-4 h-4"></i>
                 Servicios
             </a>
-            <a href="{{ url('/citasadmin') }}" class="block px-3 py-2 rounded-md text-base font-medium bg-gray-100 text-gray-900">
+            <a href="{{ url('/admin/citas') }}" class="block px-3 py-2 rounded-md text-base font-medium bg-gray-100 text-gray-900">
                 <i data-feather="calendar" class="inline mr-2 w-4 h-4"></i>
                 Citas
             </a>
-            <a href="{{ url('/clientesadmin') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            <a href="{{ url('/admin/clientes') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 <i data-feather="users" class="inline mr-2 w-4 h-4"></i>
                 Clientes
             </a>
-            <a href="{{ url('/empleadosadmin') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
+            <a href="{{ url('/admin/empleados') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 <i data-feather="user-check" class="inline mr-2 w-4 h-4"></i>
                 Empleados
             </a>

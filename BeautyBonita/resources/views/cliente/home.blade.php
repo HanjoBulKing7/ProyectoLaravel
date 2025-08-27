@@ -66,6 +66,16 @@
                     <a href="#galeria">Portafolio</a>
                     <a href="#testimonios">Testimonios</a>
                     <a href="#ubicacion">Sucursal</a>
+
+                    <!-- Logout -->
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                        @csrf
+                    </form>
+                    <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="text-red-500 hover:text-red-700">
+                    Cerrar sesión
+                    </a>
                 </div>
             </nav>
 

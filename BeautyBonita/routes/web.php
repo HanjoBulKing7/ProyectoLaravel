@@ -5,13 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\CategoriaServicioController;
 use Illuminate\Support\Facades\Auth;
 
 // Rutas Públicas (Cliente)
-Route::get('/', function () {
-    return view('cliente.welcome');
-})->name('inicio');
-
 Route::get('/home', function () {
     return view('cliente.home');
 })->name('cliente.home');
@@ -40,52 +38,61 @@ Route::get('/login', function () {
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
 // Registro de clientes
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 // Rutas de Administración
 Route::prefix('admin')->name('admin.')->group(function () {
-    
-    Route::get('/', function () {
-        if (!Auth::check()) {
-            return redirect('/login');
+    Route::get('/home', function () {
+        // Verificar rol directamente
+        if (!Auth::check() || Auth::user()->role_id != 3) {
+            return redirect('/login')->with('error', 'No tienes permisos para acceder a esta sección.');
         }
         return view('admin.dashboard');
     })->name('dashboard');
+
     
-    Route::get('/servicios', function () {
-        if (!Auth::check()) {
-            return redirect('/login');
-        }
-        return view('admin.servicios.index');
-    })->name('servicios.index');
-    
+
     Route::get('/empleados', function () {
-        if (!Auth::check()) {
-            return redirect('/login');
+        if (!Auth::check() || Auth::user()->role_id != 3) {
+            return redirect('/login')->with('error', 'No tienes permisos para acceder a esta sección.');
         }
         return view('admin.empleados.index');
     })->name('empleados.index');
-    
+
     Route::get('/citas', function () {
-        if (!Auth::check()) {
-            return redirect('/login');
+        if (!Auth::check() || Auth::user()->role_id != 3) {
+            return redirect('/login')->with('error', 'No tienes permisos para acceder a esta sección.');
         }
         return view('admin.citas.index');
     })->name('citas.index');
-    
+
     Route::get('/clientes', function () {
-        if (!Auth::check()) {
-            return redirect('/login');
+        if (!Auth::check() || Auth::user()->role_id != 3) {
+            return redirect('/login')->with('error', 'No tienes permisos para acceder a esta sección.');
         }
         return view('admin.clientes.index');
     })->name('clientes.index');
-    
-    // Rutas del controlador de Empleados
-    Route::get('/empleados/crear', [EmpleadoController::class, 'create'])->name('empleados.create');
-    Route::post('/empleados', [EmpleadoController::class, 'store'])->name('empleados.store');
+
+    Route::resource('servicios', ServicioController::class)->names('servicios');
+    // Categorías de servicios - CRUD completo
+    Route::resource('categoriaservicios', CategoriaServicioController::class)
+        ->parameters(['categoriaservicios' => 'categoria']);
 });
+
+
+
+
+
+
+Route::get('/empleados/crear', [EmpleadoController::class, 'create'])->name('empleados.create');
+Route::post('/empleados', [EmpleadoController::class, 'store'])->name('empleados.store');
+
+
+
+Route::resource('clientes', ClienteController::class);
 
 // Rutas de Payment Stripe
 Route::get('/pagar', function () {
@@ -96,13 +103,7 @@ Route::get('/checkout', [PagoController::class, 'checkout'])->name('checkout');
 Route::get('/success', [PagoController::class, 'success'])->name('success');
 Route::get('/cancel', [PagoController::class, 'cancel'])->name('cancel');
 
-// Redirección desde rutas antiguas
-Route::redirect('/interfaz', '/home');
-Route::redirect('/serviciosadmin', '/admin/servicios');
-Route::redirect('/empleadosadmin', '/admin/empleados');
-Route::redirect('/citasadmin', '/admin/citas');
-Route::redirect('/clientesadmin', '/admin/clientes');
-Route::redirect('/admin', '/admin');
+
 
 // Ruta de diagnóstico
 Route::get('/debug-auth', function () {
@@ -113,6 +114,3 @@ Route::get('/debug-auth', function () {
         'all_session' => session()->all()
     ]);
 });
-
-// Ruta resource para clientes (si es necesaria)
-Route::resource('clientes', ClienteController::class);

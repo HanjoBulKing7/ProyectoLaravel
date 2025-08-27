@@ -20,7 +20,9 @@
     <nav class="nav">
       <!-- Logo -->
       <div class="logo">
-        <img src="{{ asset('iconos/logo blanco.png') }}" alt="Beauty Logo" class="logo-img">
+        <a href="{{ url('/home') }}">
+          <img src="{{ asset('iconos/logo blanco.png') }}" alt="Beauty Logo" class="logo-img">
+        </a>
       </div>
 
       <!-- Botón Móvil -->
@@ -35,21 +37,53 @@
 
       <!-- Menú Escritorio -->
       <div class="desktop-menu">
-        <a href="{{ url('/interfaz') }}">Inicio</a>
+        <a href="{{ url('/home') }}">Inicio</a>
         <a href="#servicios">Servicios</a>
         <a href="{{ url('sucursal') }}">Sucursal</a>
         <a href="{{ url('reserva') }}">Reserva</a>
-        <a href="#contacto">Login</a>
+        
+        @auth
+          <!-- Si el usuario está autenticado -->
+          <div class="relative user-menu-container">
+            <button id="user-menu-button" class="flex items-center focus:outline-none">
+              <span class="mr-1">{{ Auth::user()->name }}</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="user-menu" class="absolute hidden right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              <a href="{{ url('perfil') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ver perfil</a>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</button>
+              </form>
+            </div>
+          </div>
+        @else
+          <!-- Si el usuario no está autenticado -->
+          <a href="{{ route('login') }}">Iniciar sesión</a>
+        @endauth
       </div>
     </nav>
 
     <!-- Menú Móvil -->
     <div id="mobile-menu" class="mobile-menu">
       <div class="mobile-menu-content">
-        <a href="{{ url('/interfaz') }}">Inicio</a>
+        <a href="{{ url('/home') }}">Inicio</a>
         <a href="#servicios">Servicios</a>
         <a href="{{ url('sucursal') }}">Sucursal</a>
-        <a href="#contacto">Login</a>
+        
+        @auth
+          <!-- Si el usuario está autenticado (versión móvil) -->
+          <a href="{{ url('perfil') }}">Mi perfil</a>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="block w-full text-left py-2 text-gray-700 border-b border-gray-200">Cerrar sesión</button>
+          </form>
+        @else
+          <!-- Si el usuario no está autenticado (versión móvil) -->
+          <a href="{{ route('login') }}">Iniciar sesión</a>
+        @endauth
 
         <div class="highlight-section">
           <p class="highlight-text">Resalta tu belleza</p>

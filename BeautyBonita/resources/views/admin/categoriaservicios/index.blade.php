@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Beauty Bonita</title>
+    <title>Admin - Categorías de Servicios</title>
     
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -14,8 +14,47 @@
     <!-- Íconos Feather -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="{{ asset('css/ServiciosAdmin.css') }}">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f5f2;
+        }
+        .top-nav {
+            background-color: #c8c2bc;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-item {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .nav-item:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            border-bottom-color: #a18a7c;
+            font-weight: 500;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .btn-primary {
+            background-color: #a18a7c;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #8a7568;
+        }
+        .badge-active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .badge-inactive {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Top Navigation -->
@@ -27,7 +66,7 @@
                     <a href="{{ url('/admin/home') }}">
                         <img src="{{ asset('iconos/logo blanco.png') }}" alt="Logo" class="h-8 mr-3">
                     </a>
-                    <span class="text-lg font-medium"> Admin Servicio</span>
+                    <span class="text-lg font-medium"> Admin Categorías</span>
                 </div>
                 
                 <!-- Menú principal -->
@@ -36,9 +75,13 @@
                         <i data-feather="home" class="mr-2 w-5 h-5"></i>
                         Dashboard
                     </a>
-                    <a href="{{ url('/admin/servicios') }}" class="nav-item active px-4 py-2 flex items-center">
+                    <a href="{{ url('/admin/servicios') }}" class="nav-item px-4 py-2 flex items-center">
                         <i data-feather="scissors" class="mr-2 w-5 h-5"></i>
                         Servicios
+                    </a>
+                    <a href="{{ route('admin.categoriaservicios.index') }}" class="nav-item active px-4 py-2 flex items-center">
+                        <i data-feather="grid" class="mr-2 w-5 h-5"></i>
+                        Categorías
                     </a>
                     <a href="{{ url('/admin/citas') }}" class="nav-item px-4 py-2 flex items-center">
                         <i data-feather="calendar" class="mr-2 w-5 h-5"></i>
@@ -84,9 +127,13 @@
                 <i data-feather="home" class="inline mr-2 w-4 h-4"></i>
                 Dashboard
             </a>
-            <a href="{{ url('/admin/servicios') }}" class="block px-3 py-2 rounded-md text-base font-medium bg-gray-100 text-gray-900">
+            <a href="{{ url('/admin/servicios') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 <i data-feather="scissors" class="inline mr-2 w-4 h-4"></i>
                 Servicios
+            </a>
+            <a href="{{ route('admin.categoriaservicios.index') }}" class="block px-3 py-2 rounded-md text-base font-medium bg-gray-100 text-gray-900">
+                <i data-feather="grid" class="inline mr-2 w-4 h-4"></i>
+                Categorías
             </a>
             <a href="{{ url('/admin/citas') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">
                 <i data-feather="calendar" class="inline mr-2 w-4 h-4"></i>
@@ -108,19 +155,25 @@
         <!-- Header y botón -->
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <div>
-                <h1 class="text-2xl font-light text-gray-800">Gestión de Servicios</h1>
-                <p class="text-gray-500 mt-1">Administra los servicios que ofreces a tus clientes</p>
+                <h1 class="text-2xl font-light text-gray-800">Gestión de Categorías</h1>
+                <p class="text-gray-500 mt-1">Administra las categorías de servicios</p>
             </div>
-            <a href="{{ route('admin.servicios.create') }}" class="btn-primary text-white px-4 py-2 rounded-md flex items-center mt-4 md:mt-0">
+            <a href="{{ route('admin.categoriaservicios.create') }}" class="btn-primary text-white px-4 py-2 rounded-md flex items-center mt-4 md:mt-0">
                 <i data-feather="plus" class="mr-2 w-4 h-4"></i>
-                Nuevo Servicio
+                Nueva Categoría
             </a>
         </div>
 
-        <!-- Mostrar mensajes de éxito -->
+        <!-- Mostrar mensajes de éxito/error -->
         @if(session('success'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                 {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                {{ session('error') }}
             </div>
         @endif
 
@@ -130,44 +183,36 @@
             <div class="p-4 border-b flex flex-col md:flex-row md:items-center justify-between">
                 <div class="relative mb-4 md:mb-0">
                     <i data-feather="search" class="absolute left-3 top-3 text-gray-400"></i>
-                    <input type="text" placeholder="Buscar servicios..." class="pl-10 pr-4 py-2 w-full md:w-64 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-300">
+                    <input type="text" placeholder="Buscar categorías..." class="pl-10 pr-4 py-2 w-full md:w-64 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-300">
                 </div>
                 <div class="flex space-x-2">
                     <select class="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-300 text-sm">
                         <option>Todos los estados</option>
-                        <option>Activos</option>
-                        <option>Inactivos</option>
-                    </select>
-                    <select class="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-300 text-sm">
-                        <option>Ordenar por</option>
-                        <option>Nombre A-Z</option>
-                        <option>Nombre Z-A</option>
-                        <option>Precio ↑</option>
-                        <option>Precio ↓</option>
+                        <option>Activas</option>
+                        <option>Inactivas</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Tabla de servicios -->
+            <!-- Tabla de categorías -->
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Imagen</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoría</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duración</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Servicios</th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
                             <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach($servicios as $servicio)
+                        @foreach($categorias as $categoria)
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap">
-                                @if($servicio->imagen)
-                                    <img src="{{ asset('storage/' . $servicio->imagen) }}" alt="{{ $servicio->nombre_servicio }}" class="h-12 w-12 rounded-full object-cover">
+                                @if($categoria->imagen)
+                                    <img src="{{ asset('storage/' . $categoria->imagen) }}" alt="{{ $categoria->nombre }}" class="h-12 w-12 rounded-full object-cover">
                                 @else
                                     <div class="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">
                                         <i data-feather="image" class="text-gray-400"></i>
@@ -175,31 +220,31 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="font-medium text-gray-900">{{ $servicio->nombre_servicio }}</div>
-                                <div class="text-sm text-gray-500 truncate max-w-xs">{{ Str::limit($servicio->descripcion, 50) }}</div>
+                                <div class="font-medium text-gray-900">{{ $categoria->nombre }}</div>
+                                <div class="text-sm text-gray-500">{{ $categoria->slug }}</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-500 max-w-xs truncate">{{ $categoria->descripcion ?? 'Sin descripción' }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{ $servicio->categoria->nombre ?? 'Sin categoría' }}</div>
+                                <div class="text-sm text-gray-900">{{ $categoria->servicios->count() }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">${{ number_format($servicio->precio, 2) }}</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-500">{{ $servicio->duracion_minutos }} min</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 py-1 text-xs rounded-full {{ $servicio->estado == 'activo' ? 'badge-active' : 'badge-inactive' }}">
-                                    {{ ucfirst($servicio->estado) }}
+                                <span class="px-2 py-1 text-xs rounded-full {{ $categoria->estado == 'activa' ? 'badge-active' : 'badge-inactive' }}">
+                                    {{ ucfirst($categoria->estado) }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('admin.servicios.edit', $servicio->id_servicio) }}" class="text-gray-500 hover:text-gray-700 mr-3">
+                                <a href="{{ route('admin.categoriaservicios.show', $categoria->id_categoria) }}" class="text-gray-500 hover:text-gray-700 mr-3">
+                                    <i data-feather="eye" class="w-4 h-4"></i>
+                                </a>
+                                <a href="{{ route('admin.categoriaservicios.edit',  $categoria->id_categoria) }}" class="text-gray-500 hover:text-gray-700 mr-3">
                                     <i data-feather="edit" class="w-4 h-4"></i>
                                 </a>
-                                <form action="{{ route('admin.servicios.destroy', $servicio->id_servicio) }}" method="POST" class="inline-block">
+                                <form action="{{ route('admin.categoriaservicios.destroy', $categoria->id_categoria) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-gray-500 hover:text-gray-700" onclick="return confirm('¿Estás seguro de eliminar este servicio?')">
+                                    <button type="submit" class="text-gray-500 hover:text-gray-700" onclick="return confirm('¿Estás seguro de eliminar esta categoría?')">
                                         <i data-feather="trash-2" class="w-4 h-4"></i>
                                     </button>
                                 </form>
@@ -215,7 +260,7 @@
                 <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                     <div>
                         <p class="text-sm text-gray-700">
-                            Mostrando <span class="font-medium">{{ $servicios->count() }}</span> resultados
+                            Mostrando <span class="font-medium">{{ $categorias->count() }}</span> resultados
                         </p>
                     </div>
                 </div>
@@ -223,8 +268,20 @@
         </div>
     </div>
 
-    <!-- JS personalizado -->
-    <script src="{{ asset('js/ServiciosAdmin.js') }}" defer></script>
-    
+    <!-- JS -->
+    <script>
+        // Inicializar feather icons
+        feather.replace();
+
+        // Manejar el menú móvil
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
