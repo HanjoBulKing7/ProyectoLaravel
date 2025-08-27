@@ -9,6 +9,7 @@ docker-compose up -d
 # 2. Entrar al contenedor Laravel (para ejecutar codigos como php artisan)
 docker exec -it laravel_app bash
 
+
 # 3. Instalar dependencias
 composer install
 
@@ -17,7 +18,7 @@ composer install
 php artisan key:generate
 php artisan migrate
 
-
+-----------------------------------------------------------------
 --- Comandos Adicionales ---
 Comandos ejecutables crear y eliminar
  * docker compose up --build -d
